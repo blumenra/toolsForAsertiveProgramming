@@ -1,0 +1,35 @@
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\VSIXProject_w.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\VSIXProject_w.pdb
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\VSIXProject_w.pkgdef
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\extension.vsixmanifest
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieAbsInt.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieBasetypes.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieConcurrency.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieCore.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieDoomed.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieExecutionEngine.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieGraph.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieHoudini.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieModelViewer.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieParserHelper.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\BoogieVCGeneration.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\DafnyPipeline.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria Terentiev\VSIXProject_w\1.0\\Provers.SMTLib.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\VSIXProject_w.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\VSIXProject_w.pdb
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieAbsInt.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieBasetypes.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieConcurrency.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieCore.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieDoomed.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieExecutionEngine.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieGraph.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieHoudini.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieModelViewer.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieParserHelper.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieVCGeneration.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\DafnyPipeline.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\Provers.SMTLib.dll
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\VSIXProject_w.pkgdef
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\extension.vsixmanifest
+C:\Users\Home\AppData\Local\Microsoft\VisualStudio\14.0Exp\Extensions\Maria & Alon\Dafny refactoring project\1.0\\BoogieCodeContractsExtender.dll

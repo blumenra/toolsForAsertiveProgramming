@@ -1,0 +1,20 @@
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
+  <Metadata>
+    <Identity Id="VSIXProject_w.Maria Terentiev.c2fd327e-3009-4842-a0ec-e582727a4067" Version="1.0" Language="en-US" Publisher="Maria &amp; Alon" />
+    <DisplayName>Dafny refactoring project</DisplayName>
+    <Description xml:space="preserve">Refactoring tool for Dafny, adding new menu "refactoring" with the following functionality:
+Introduce local variable
+Weaken pre condition
+Strengh post condition</Description>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="[4.5,)" />
+    <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" Version="[14.0]" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" Path="VSIXProject_w.pkgdef" />
+  </Assets>
+</PackageManifest>
