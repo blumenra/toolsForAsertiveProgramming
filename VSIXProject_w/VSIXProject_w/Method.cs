@@ -1,5 +1,3 @@
-﻿
-
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -7,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VSIXProject_w
+namespace MiniProject
 {
     public class Method : GeneralFunction
     {
@@ -25,7 +23,7 @@ namespace VSIXProject_w
 
 
             List<Variable> args = new List<Variable>();
-            foreach (Variable var in this.args)
+            foreach(Variable var in this.args)
             {
                 if (hasRetValue(var))
                 {
@@ -36,7 +34,7 @@ namespace VSIXProject_w
                 else
                     args.Add(new Variable(var.Name, var.Type));
             }
-
+            
             //List<string> preConds = this.AppendPreConds(tabs);
             List<string> preCondsList = new List<string>();
             //string newPreConds = preConds;
@@ -46,9 +44,9 @@ namespace VSIXProject_w
                 foreach (Variable arg in args)
                 {
                     string name = arg.Name;
-                    if (name[name.Length - 1].Equals('0'))
+                    if (name[name.Length-1].Equals('0'))
                     {
-                        string rawName = name.Substring(0, name.Length - 1);
+                        string rawName = name.Substring(0, name.Length-1);
                         //string pattern = @"(^" + Regex.Escape(rawName) + @"\W) | (\W" + Regex.Escape(rawName) + @"\W)";
                         string pattern = @"^" + Regex.Escape(rawName) + @"\W";
                         foreach (Match m in Regex.Matches(tmpPreCond, pattern))
@@ -57,7 +55,7 @@ namespace VSIXProject_w
                             string tmp = tmpPreCond;
                             tmpPreCond = tmp.Substring(0, m.Index);
                             tmpPreCond += name;
-                            tmpPreCond += tmp.Substring(m.Index + rawName.Length, tmp.Length - m.Index - rawName.Length);
+                            tmpPreCond += tmp.Substring(m.Index+rawName.Length, tmp.Length - m.Index - rawName.Length);
                         }
                     }
                 }
@@ -93,11 +91,11 @@ namespace VSIXProject_w
             ans += preConds;
             ans += this.AppendPostConds(tabs);
 
-            ans += "{\n";
-            ans += tabs + body;
-            ans += "\n";
-            ans += tabs + "// Implement here...\n";
-            ans += "}\n";
+            //ans += "{\n";
+            //ans += tabs + body;
+            //ans += "\n";
+            //ans += tabs + "// Implement here...\n";
+            //ans += "}\n";
 
             return ans;
         }
@@ -119,7 +117,7 @@ namespace VSIXProject_w
             string right = "";
             foreach (Variable var in args)
             {
-                left += var.Name.Substring(0, var.Name.Length - 1) + ", ";
+                left += var.Name.Substring(0, var.Name.Length-1) + ", ";
                 right += var.Name + ", ";
             }
 
@@ -139,4 +137,3 @@ namespace VSIXProject_w
         }
     }
 }
-

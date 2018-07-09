@@ -20,10 +20,6 @@ namespace MiniProject
             method += indentation + "requires 0 < |q|\n";
             method += indentation + "ensures Inv(q, i, min, max)\n";
             method += indentation + "ensures i == |q|\n";
-            method += "{\n";
-            method += indentation + "\n";
-            method += indentation + "// Implement here...\n";
-            method += "}\n";
 
 
             assertiveToolDS ds = new assertiveToolDS();
@@ -150,10 +146,6 @@ namespace MiniProject
             method += indentation + "requires 0 < |q|\n";
             method += indentation + "ensures Inv(q, i, min, max)\n";
             method += indentation + "ensures i == |q|\n";
-            method += "{\n";
-            method += indentation + "\n";
-            method += indentation + "// Implement here...\n";
-            method += "}\n";
 
 
             assertiveToolDS ds = new assertiveToolDS();
@@ -277,11 +269,6 @@ namespace MiniProject
             method += indentation + "requires Inv3(q, i, min, max)\n";
             method += indentation + "ensures MinElement(min, q)\n";
             method += indentation + "ensures MaxElement(max, q)\n";
-            method += "{\n";
-            method += indentation + "\n";
-            method += indentation + "// Implement here...\n";
-            method += "}\n";
-
 
 
             assertiveToolDS ds = new assertiveToolDS();
@@ -343,10 +330,7 @@ namespace MiniProject
             method += "method MM1(q: seq<int>) returns(i: nat, q': seq<int>, j': int, k': nat, min: int, max: int)\n";
             method += indentation + "requires 0 < |q|\n";
             method += indentation + "ensures Inv(q, i, min, max)\n";
-            method += "{\n";
-            method += indentation + "\n";
-            method += indentation + "// Implement here...\n";
-            method += "}\n";
+
 
             assertiveToolDS ds = new assertiveToolDS();
 
@@ -401,10 +385,7 @@ namespace MiniProject
             method += "method MM1(q: seq<int>, a: nat, b: nat) returns(i: nat, min: int, max: int)\n";
             method += indentation + "requires 0 < |q|\n";
             method += indentation + "ensures Inv(q, i, min, max)\n";
-            method += "{\n";
-            method += indentation + "\n";
-            method += indentation + "// Implement here...\n";
-            method += "}\n";
+
 
             assertiveToolDS ds = new assertiveToolDS();
 
@@ -457,10 +438,7 @@ namespace MiniProject
             method += "method MM1(q: seq<int>, a: nat, b: nat) returns(i: nat, min: int, max: int)\n";
             method += indentation + "requires 0 < |q|\n";
             method += indentation + "ensures Inv(q, i, min, max)\n";
-            method += "{\n";
-            method += indentation + "\n";
-            method += indentation + "// Implement here...\n";
-            method += "}\n";
+
 
             assertiveToolDS ds = new assertiveToolDS();
 
@@ -517,18 +495,12 @@ namespace MiniProject
             lemma += indentation + "ensures Inv(q, i, min, max)\n";
             lemma += indentation + "ensures i > min && max < q\n";
             
-
-
+            
             string method = "";
             method += "method MM3(q: seq<int>, i0: nat, min0: int, max0: int) returns(i: nat, min: int, max: int)\n";
             method += indentation + "requires Inv(q, i0, min0, max0)\n"; //@@@
             method += indentation + "requires i0 > min0 && max0 < q\n"; //@@@
             method += indentation + "ensures Inv(q, i, min, max) && i == |q|\n";
-            method += "{\n";
-            method += indentation + "i, min, max := i0, min0, max0;\n";
-            method += "\n";
-            method += indentation + "// Implement here...\n";
-            method += "}\n";
 
 
             assertiveToolDS ds = new assertiveToolDS();
