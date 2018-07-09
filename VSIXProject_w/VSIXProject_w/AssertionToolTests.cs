@@ -506,6 +506,8 @@ namespace MiniProject
             body += "assert 0 < |q| && min == q[0] && max == q[0] && i == 1;\n";
             body += "L3(q, i, min, max);\n";
             body += "assert Inv(q, i, min, max);\n";
+            body += "assert i > min && max < q;\n";
+            
             body += "i, min, max := MM3(q, i, min, max);\n";
             body += "assert Inv(q, i, min, max) && i == |q|;\n";
 
@@ -513,10 +515,14 @@ namespace MiniProject
             lemma += "lemma L3(q: seq<int>, i: nat, min: int, max: int)\n";
             lemma += indentation + "requires 0 < |q| && min == q[0] && max == q[0] && i == 1\n";
             lemma += indentation + "ensures Inv(q, i, min, max)\n";
+            lemma += indentation + "ensures i > min && max < q\n";
+            
+
 
             string method = "";
             method += "method MM3(q: seq<int>, i0: nat, min0: int, max0: int) returns(i: nat, min: int, max: int)\n";
-            method += indentation + "requires Inv(q, i, min, max)\n"; //@@@
+            method += indentation + "requires Inv(q, i0, min0, max0)\n"; //@@@
+            method += indentation + "requires i0 > min0 && max0 < q\n"; //@@@
             method += indentation + "ensures Inv(q, i, min, max) && i == |q|\n";
             method += "{\n";
             method += indentation + "i, min, max := i0, min0, max0;\n";
@@ -539,6 +545,8 @@ namespace MiniProject
             ds.AddPreCond("0 < |q| && min0 == q[0] && max0 == q[0] && i0 == 1");
             ds.AddPostCond("Inv(q, i, min, max) && i == |q|");
             ds.weakenPreCond("Inv(q, i, min, max)");
+            ds.weakenPreCond("i > min && max < q");
+            
 
 
             string name;
