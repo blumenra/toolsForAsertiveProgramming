@@ -339,6 +339,13 @@ namespace VSIXProject_w
 
             body += this.pMethod.GenerateAssertionsFromPostConds();
 
+            string indent = "\t";
+            string[] bla = body.Split(new Char[] {'\n'});
+            for(int i=0; i < bla.Length - 1; i++)
+                bla[i] = indent + bla[i] + "\n";
+
+            body = String.Join("", bla);
+
             return body;
         }
 

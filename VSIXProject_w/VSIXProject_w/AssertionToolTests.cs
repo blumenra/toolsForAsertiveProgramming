@@ -5,15 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiniProject
+namespace VSIXProject_w
 {
     [TestFixture]
     class AssertionToolTests
     {
+
+        string indentation = "\t";
+
         [TestCase]
         public void GenerateMethod()
         {
-            string indentation = "\t";
 
             string method = "";
             method += "method MM1(q: seq<int>) returns(i: nat, q0: seq<int>, min: int, max: int)\n";
@@ -47,8 +49,6 @@ namespace MiniProject
         [TestCase]
         public void GenerateLemma()
         {
-            string indentation = "\t";
-
             string lemma = "";
             lemma += "lemma L1(q: seq<int>, i: nat, q0: seq<int>, min: int, max: int)\n";
             lemma += indentation + "requires Inv(q, i, min, max)\n";
@@ -83,15 +83,15 @@ namespace MiniProject
         public void GenerateBody()
         {
             string body = "";
-            body += "var i : nat;\n";
-            body += "var q' : seq<int>;\n";
-            body += "assert 0 < |q|;\n";
-            body += "i, q', min, max := MM1(q);\n";
-            body += "assert Inv(q, i, min, max);\n";
-            body += "assert i == |q|;\n";
-            body += "L1(q, i, q', min, max);\n";
-            body += "assert MinElement(min, q);\n";
-            body += "assert MaxElement(max, q);\n";
+            body += indentation + "var i : nat;\n";
+            body += indentation + "var q' : seq<int>;\n";
+            body += indentation + "assert 0 < |q|;\n";
+            body += indentation + "i, q', min, max := MM1(q);\n";
+            body += indentation + "assert Inv(q, i, min, max);\n";
+            body += indentation + "assert i == |q|;\n";
+            body += indentation + "L1(q, i, q', min, max);\n";
+            body += indentation + "assert MinElement(min, q);\n";
+            body += indentation + "assert MaxElement(max, q);\n";
 
             assertiveToolDS ds = new assertiveToolDS();
 
@@ -121,18 +121,16 @@ namespace MiniProject
         [TestCase]
         public void AllTogether()
         {
-            string indentation = "\t";
-
             string body = "";
-            body += "var i : nat;\n";
-            body += "var q' : seq<int>;\n";
-            body += "assert 0 < |q|;\n";
-            body += "i, q', min, max := MM1(q);\n";
-            body += "assert Inv(q, i, min, max);\n";
-            body += "assert i == |q|;\n";
-            body += "L1(q, i, q', min, max);\n";
-            body += "assert MinElement(min, q);\n";
-            body += "assert MaxElement(max, q);\n";
+            body += indentation + "var i : nat;\n";
+            body += indentation + "var q' : seq<int>;\n";
+            body += indentation + "assert 0 < |q|;\n";
+            body += indentation + "i, q', min, max := MM1(q);\n";
+            body += indentation + "assert Inv(q, i, min, max);\n";
+            body += indentation + "assert i == |q|;\n";
+            body += indentation + "L1(q, i, q', min, max);\n";
+            body += indentation + "assert MinElement(min, q);\n";
+            body += indentation + "assert MaxElement(max, q);\n";
 
             string lemma = "";
             lemma += "lemma L1(q: seq<int>, i: nat, q': seq<int>, min: int, max: int)\n";
@@ -179,18 +177,16 @@ namespace MiniProject
         [TestCase]
         public void StrengthenPostCondition()
         {
-            string indentation = "\t";
-
             string body = "";
-            body += "var i : nat;\n";
-            body += "assert 0 < |q|;\n";
-            body += "i, min, max := MM1(q);\n";
-            body += "assert Inv(q, i, min, max);\n";
-            body += "assert i == |q|;\n";
-            body += "assert i <= 100;\n";
-            body += "L1(q, i, min, max);\n";
-            body += "assert MinElement(min, q);\n";
-            body += "assert MaxElement(max, q);\n";
+            body += indentation + "var i : nat;\n";
+            body += indentation + "assert 0 < |q|;\n";
+            body += indentation + "i, min, max := MM1(q);\n";
+            body += indentation + "assert Inv(q, i, min, max);\n";
+            body += indentation + "assert i == |q|;\n";
+            body += indentation + "assert i <= 100;\n";
+            body += indentation + "L1(q, i, min, max);\n";
+            body += indentation + "assert MinElement(min, q);\n";
+            body += indentation + "assert MaxElement(max, q);\n";
 
             string lemma = "";
             lemma += "lemma L1(q: seq<int>, i: nat, min: int, max: int)\n";
@@ -243,19 +239,17 @@ namespace MiniProject
         [TestCase]
         public void WeakenPreCondition()
         {
-            string indentation = "\t";
-
             string body = "";
-            body += "var i : nat;\n";
-            body += "assert 0 < |q|;\n";
-            body += "L1(q, i, min, max);\n";
+            body += indentation + "var i : nat;\n";
+            body += indentation + "assert 0 < |q|;\n";
+            body += indentation + "L1(q, i, min, max);\n";
 
-            body += "assert Inv2(q, i, min, max);\n";
-            body += "assert Inv3(q, i, min, max);\n";
+            body += indentation + "assert Inv2(q, i, min, max);\n";
+            body += indentation + "assert Inv3(q, i, min, max);\n";
 
-            body += "i, min, max := MM1(q);\n";
-            body += "assert MinElement(min, q);\n";
-            body += "assert MaxElement(max, q);\n";
+            body += indentation + "i, min, max := MM1(q);\n";
+            body += indentation + "assert MinElement(min, q);\n";
+            body += indentation + "assert MaxElement(max, q);\n";
 
             string lemma = "";
             lemma += "lemma L1(q: seq<int>, i: nat, min: int, max: int)\n";
@@ -306,19 +300,17 @@ namespace MiniProject
         [TestCase]
         public void MultipleLocalVariables()
         {
-            string indentation = "\t";
-
             string body = "";
-            body += "var i : nat;\n";
-            body += "var q' : seq<int>;\n";
-            body += "var j' : int;\n";
-            body += "var k' : nat;\n";
-            body += "assert 0 < |q|;\n";
-            body += "i, q', j', k', min, max := MM1(q);\n";
-            body += "assert Inv(q, i, min, max);\n";
-            body += "L1(q, i, q', j', k', min, max);\n";
-            body += "assert MinElement(min, q);\n";
-            body += "assert MaxElement(max, q);\n";
+            body += indentation + "var i : nat;\n";
+            body += indentation + "var q' : seq<int>;\n";
+            body += indentation + "var j' : int;\n";
+            body += indentation + "var k' : nat;\n";
+            body += indentation + "assert 0 < |q|;\n";
+            body += indentation + "i, q', j', k', min, max := MM1(q);\n";
+            body += indentation + "assert Inv(q, i, min, max);\n";
+            body += indentation + "L1(q, i, q', j', k', min, max);\n";
+            body += indentation + "assert MinElement(min, q);\n";
+            body += indentation + "assert MaxElement(max, q);\n";
 
             string lemma = "";
             lemma += "lemma L1(q: seq<int>, i: nat, q': seq<int>, j': int, k': nat, min: int, max: int)\n";
@@ -364,16 +356,14 @@ namespace MiniProject
         [TestCase]
         public void MultipleArguments()
         {
-            string indentation = "\t";
-
             string body = "";
-            body += "var i : nat;\n";
-            body += "assert 0 < |q|;\n";
-            body += "i, min, max := MM1(q, a, b);\n";
-            body += "assert Inv(q, i, min, max);\n";
-            body += "L1(q, a, b, i, min, max);\n";
-            body += "assert MinElement(min, q);\n";
-            body += "assert MaxElement(max, q);\n";
+            body += indentation + "var i : nat;\n";
+            body += indentation + "assert 0 < |q|;\n";
+            body += indentation + "i, min, max := MM1(q, a, b);\n";
+            body += indentation + "assert Inv(q, i, min, max);\n";
+            body += indentation + "L1(q, a, b, i, min, max);\n";
+            body += indentation + "assert MinElement(min, q);\n";
+            body += indentation + "assert MaxElement(max, q);\n";
 
             string lemma = "";
             lemma += "lemma L1(q: seq<int>, a: nat, b: nat, i: nat, min: int, max: int)\n";
@@ -417,16 +407,14 @@ namespace MiniProject
         [TestCase]
         public void IdenticalValues()
         {
-            string indentation = "\t";
-
             string body = "";
-            body += "var i : nat;\n";
-            body += "assert 0 < |q|;\n";
-            body += "i, min, max := MM1(q, a, b);\n";
-            body += "assert Inv(q, i, min, max);\n";
-            body += "L1(q, a, b, i, min, max);\n";
-            body += "assert MinElement(min, q);\n";
-            body += "assert MaxElement(max, q);\n";
+            body += indentation + "var i : nat;\n";
+            body += indentation + "assert 0 < |q|;\n";
+            body += indentation + "i, min, max := MM1(q, a, b);\n";
+            body += indentation + "assert Inv(q, i, min, max);\n";
+            body += indentation + "L1(q, a, b, i, min, max);\n";
+            body += indentation + "assert MinElement(min, q);\n";
+            body += indentation + "assert MaxElement(max, q);\n";
 
             string lemma = "";
             lemma += "lemma L1(q: seq<int>, a: nat, b: nat, i: nat, min: int, max: int)\n";
@@ -477,17 +465,15 @@ namespace MiniProject
         [TestCase]
         public void args0WithSameInRet()
         {
-            string indentation = "\t";
-
             string body = "";
-            body += "i, min, max := i0, min0, max0;\n";
-            body += "assert 0 < |q| && min == q[0] && max == q[0] && i == 1;\n";
-            body += "L3(q, i, min, max);\n";
-            body += "assert Inv(q, i, min, max);\n";
-            body += "assert i > min && max < q;\n";
+            body += indentation + "i, min, max := i0, min0, max0;\n";
+            body += indentation + "assert 0 < |q| && min == q[0] && max == q[0] && i == 1;\n";
+            body += indentation + "L3(q, i, min, max);\n";
+            body += indentation + "assert Inv(q, i, min, max);\n";
+            body += indentation + "assert i > min && max < q;\n";
             
-            body += "i, min, max := MM3(q, i, min, max);\n";
-            body += "assert Inv(q, i, min, max) && i == |q|;\n";
+            body += indentation + "i, min, max := MM3(q, i, min, max);\n";
+            body += indentation + "assert Inv(q, i, min, max) && i == |q|;\n";
 
             string lemma = "";
             lemma += "lemma L3(q: seq<int>, i: nat, min: int, max: int)\n";
