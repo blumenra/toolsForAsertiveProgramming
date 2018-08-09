@@ -39,6 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.post_cond1 = new System.Windows.Forms.TextBox();
             this.button_more = new System.Windows.Forms.Button();
+            this.post_lable = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_clear
@@ -117,20 +118,20 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 122);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 33;
-            this.label5.Text = "Post Condition:";
+            this.label5.Text = "Post Conditions:";
             // 
             // post_cond1
             // 
-            this.post_cond1.Location = new System.Drawing.Point(56, 141);
+            this.post_cond1.Location = new System.Drawing.Point(56, 164);
             this.post_cond1.Name = "post_cond1";
             this.post_cond1.Size = new System.Drawing.Size(225, 20);
             this.post_cond1.TabIndex = 32;
             // 
             // button_more
             // 
-            this.button_more.Location = new System.Drawing.Point(56, 167);
+            this.button_more.Location = new System.Drawing.Point(56, 190);
             this.button_more.Name = "button_more";
             this.button_more.Size = new System.Drawing.Size(49, 29);
             this.button_more.TabIndex = 37;
@@ -138,11 +139,20 @@
             this.button_more.UseVisualStyleBackColor = true;
             this.button_more.Click += new System.EventHandler(this.button_more_Click);
             // 
+            // post_lable
+            // 
+            this.post_lable.AutoSize = true;
+            this.post_lable.Location = new System.Drawing.Point(59, 148);
+            this.post_lable.Name = "post_lable";
+            this.post_lable.Size = new System.Drawing.Size(0, 13);
+            this.post_lable.TabIndex = 38;
+            // 
             // post_question
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 202);
+            this.ClientSize = new System.Drawing.Size(397, 229);
+            this.Controls.Add(this.post_lable);
             this.Controls.Add(this.button_more);
             this.Controls.Add(this.lableLemaPost);
             this.Controls.Add(this.postLemaName);
@@ -174,5 +184,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox post_cond1;
         private System.Windows.Forms.Button button_more;
+        private System.Windows.Forms.Label post_lable;
     }
 }

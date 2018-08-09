@@ -50,6 +50,8 @@
             this.postLemaName = new System.Windows.Forms.TextBox();
             this.lableLemaPre = new System.Windows.Forms.Label();
             this.lableLemaPost = new System.Windows.Forms.Label();
+            this.pre_lable = new System.Windows.Forms.Label();
+            this.post_lable = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -133,18 +135,18 @@
             this.button_clear.UseVisualStyleBackColor = true;
             this.button_clear.Click += new System.EventHandler(this.button_clear_Click);
             // 
-            // pre_cond1
+            // pre_cond
             // 
             this.pre_cond.Enabled = false;
-            this.pre_cond.Location = new System.Drawing.Point(260, 63);
-            this.pre_cond.Name = "pre_cond1";
+            this.pre_cond.Location = new System.Drawing.Point(260, 85);
+            this.pre_cond.Name = "pre_cond";
             this.pre_cond.Size = new System.Drawing.Size(224, 20);
             this.pre_cond.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(213, 47);
+            this.label4.Location = new System.Drawing.Point(257, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(119, 13);
             this.label4.TabIndex = 11;
@@ -153,17 +155,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(216, 160);
+            this.label5.Location = new System.Drawing.Point(257, 184);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Post Condition (optional):";
             // 
-            // post_cond1
+            // post_cond
             // 
             this.post_cond.Enabled = false;
-            this.post_cond.Location = new System.Drawing.Point(260, 179);
-            this.post_cond.Name = "post_cond1";
+            this.post_cond.Location = new System.Drawing.Point(260, 226);
+            this.post_cond.Name = "post_cond";
             this.post_cond.Size = new System.Drawing.Size(224, 20);
             this.post_cond.TabIndex = 12;
             // 
@@ -179,7 +181,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(216, 66);
+            this.checkBox1.Location = new System.Drawing.Point(219, 38);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 15;
@@ -189,7 +191,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(219, 182);
+            this.checkBox2.Location = new System.Drawing.Point(219, 184);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 16;
@@ -215,7 +217,7 @@
             // preCondName
             // 
             this.preCondName.Enabled = false;
-            this.preCondName.Location = new System.Drawing.Point(260, 101);
+            this.preCondName.Location = new System.Drawing.Point(260, 123);
             this.preCondName.Name = "preCondName";
             this.preCondName.Size = new System.Drawing.Size(155, 20);
             this.preCondName.TabIndex = 19;
@@ -223,7 +225,7 @@
             // postLemaName
             // 
             this.postLemaName.Enabled = false;
-            this.postLemaName.Location = new System.Drawing.Point(260, 221);
+            this.postLemaName.Location = new System.Drawing.Point(260, 265);
             this.postLemaName.Name = "postLemaName";
             this.postLemaName.Size = new System.Drawing.Size(155, 20);
             this.postLemaName.TabIndex = 20;
@@ -232,7 +234,7 @@
             // 
             this.lableLemaPre.AutoSize = true;
             this.lableLemaPre.Enabled = false;
-            this.lableLemaPre.Location = new System.Drawing.Point(216, 86);
+            this.lableLemaPre.Location = new System.Drawing.Point(257, 109);
             this.lableLemaPre.Name = "lableLemaPre";
             this.lableLemaPre.Size = new System.Drawing.Size(67, 13);
             this.lableLemaPre.TabIndex = 21;
@@ -242,17 +244,38 @@
             // 
             this.lableLemaPost.AutoSize = true;
             this.lableLemaPost.Enabled = false;
-            this.lableLemaPost.Location = new System.Drawing.Point(216, 204);
+            this.lableLemaPost.Location = new System.Drawing.Point(257, 249);
             this.lableLemaPost.Name = "lableLemaPost";
             this.lableLemaPost.Size = new System.Drawing.Size(67, 13);
             this.lableLemaPost.TabIndex = 22;
             this.lableLemaPost.Text = "Lema Name:";
             // 
+            // pre_lable
+            // 
+            this.pre_lable.AutoSize = true;
+            this.pre_lable.Enabled = false;
+            this.pre_lable.Location = new System.Drawing.Point(263, 62);
+            this.pre_lable.Name = "pre_lable";
+            this.pre_lable.Size = new System.Drawing.Size(0, 13);
+            this.pre_lable.TabIndex = 23;
+            // 
+            // post_lable
+            // 
+            this.post_lable.AutoSize = true;
+            this.post_lable.Enabled = false;
+            this.post_lable.Location = new System.Drawing.Point(265, 204);
+            this.post_lable.Name = "post_lable";
+            this.post_lable.Size = new System.Drawing.Size(0, 16);
+            this.post_lable.TabIndex = 24;
+            this.post_lable.UseCompatibleTextRendering = true;
+            // 
             // question_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 259);
+            this.ClientSize = new System.Drawing.Size(663, 316);
+            this.Controls.Add(this.post_lable);
+            this.Controls.Add(this.pre_lable);
             this.Controls.Add(this.lableLemaPost);
             this.Controls.Add(this.lableLemaPre);
             this.Controls.Add(this.postLemaName);
@@ -306,5 +329,7 @@
         private System.Windows.Forms.TextBox postLemaName;
         private System.Windows.Forms.Label lableLemaPre;
         private System.Windows.Forms.Label lableLemaPost;
+        private System.Windows.Forms.Label pre_lable;
+        private System.Windows.Forms.Label post_lable;
     }
 }

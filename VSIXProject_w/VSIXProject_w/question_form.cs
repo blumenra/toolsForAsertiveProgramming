@@ -21,6 +21,8 @@ namespace VSIXProject_w
         TextBox prevtxtBox1;
         TextBox prevtxtBox2;
         int index ;
+        DafnyCodeParser p;
+        TextSelection toInsert;
 
         public question_form()
         {
@@ -28,9 +30,82 @@ namespace VSIXProject_w
             prevtxtBox1 = this.NameBox1;
             prevtxtBox2 = this.TypeBox1;
             index = 1;
+            p = new DafnyCodeParser();
+           
+
         }
 
-    
+        public DialogResult ShowDialog()
+        {
+            TextDocument activeDoc = null;
+            DTE dte = null;
+
+            try
+            {
+                dte = Package.GetGlobalService(typeof(DTE)) as DTE;
+                activeDoc = dte.ActiveDocument.Object() as TextDocument;
+            }
+            catch
+            {
+                MessageBox.Show("Please open a Dafny file befor using the aplication.", "File not open", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //this.Close();
+                return DialogResult.Abort;
+
+            }
+
+            //get position 
+            var cursPoint = activeDoc.Selection.ActivePoint;
+
+            // to insert
+            toInsert = (EnvDTE.TextSelection)(activeDoc.Selection);
+
+            //get all text
+            var text = activeDoc.CreateEditPoint(activeDoc.StartPoint).GetText(activeDoc.EndPoint);
+
+            // get input to spesific class
+            // get input
+            string name = get_method_name(text, cursPoint);
+            if (name == String.Empty)
+            {
+                MessageBox.Show("Method not found.", "Method not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // this.Close();
+                return DialogResult.Abort;
+            }
+            label1.Text = "To introduce local variable for the method \"" + name + "\", please fill the fields below:";
+            try
+            {
+                //parsing
+                p.parse_file(dte.ActiveDocument.FullName, name);
+               
+                //adding pre conditions
+                List<String> precond = p.get_req();
+                this.pre_lable.Text = string.Join("\n", precond);
+                this.pre_cond.Location = new Point(this.pre_cond.Location.X, this.pre_cond.Location.Y + 10 * precond.Count);
+                this.lableLemaPre.Location = new Point(this.lableLemaPre.Location.X, this.lableLemaPre.Location.Y + 10 * precond.Count);
+                this.preCondName.Location = new Point(this.preCondName.Location.X, this.preCondName.Location.Y + 10 * precond.Count);
+
+                //adding post conditions
+                List<String> postcond = p.get_ens();
+                this.post_lable.Text = string.Join("\n", postcond);
+                this.post_cond.Location = new Point(this.post_cond.Location.X, this.post_cond.Location.Y + 10 * postcond.Count + 10 * precond.Count);
+                this.postLemaName.Location = new Point(this.postLemaName.Location.X, this.postLemaName.Location.Y + 10 * postcond.Count + 10 * precond.Count);
+                this.lableLemaPost.Location = new Point(this.lableLemaPost.Location.X, this.lableLemaPost.Location.Y + 10 * postcond.Count + 10 * precond.Count);
+                this.checkBox2.Location = new Point(this.checkBox2.Location.X, this.checkBox2.Location.Y  + 10 * precond.Count);
+                this.label5.Location = new Point(this.label5.Location.X, this.label5.Location.Y + 10 * precond.Count);
+                this.post_lable.Location = new Point(this.label5.Location.X, this.label5.Location.Y + 10 * precond.Count);
+
+
+                this.Height += 10 * postcond.Count + 10 *precond.Count;
+            }
+            catch
+            {
+                MessageBox.Show("Error parsing Dafny.", "Error parsing Dafny.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // this.Close();
+                return DialogResult.Abort;
+            }
+            return base.ShowDialog();
+        }
+
         private void button_more_Click(object sender, EventArgs e)
         {
             index++;
@@ -78,41 +153,15 @@ namespace VSIXProject_w
             try
             {
                 assertiveToolDS dafnyCreate = new assertiveToolDS();
-                TextDocument activeDoc = null;
-                DTE dte = null;
+            
+                dafnyCreate.Name = p.currentMethod.FullName;
 
-                try
+                if (this.methodName.Text == string.Empty)
                 {
-                    dte = Package.GetGlobalService(typeof(DTE)) as DTE;
-                    activeDoc = dte.ActiveDocument.Object() as TextDocument;
-                }
-                catch
-                {
-                    MessageBox.Show("Please open a Dafny file befor using the aplication.", "File not open", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                    return;
-
-                }
-                //get position 
-                var cursPoint = activeDoc.Selection.ActivePoint;
-
-            // to insert
-            TextSelection toInsert = ( EnvDTE.TextSelection )(activeDoc.Selection);
-
-            //get all text
-            var text = activeDoc.CreateEditPoint(activeDoc.StartPoint).GetText(activeDoc.EndPoint);
-
-                // get input to spesific class
-                // get input
-                string name = get_method_name(text, cursPoint);
-                if (name == String.Empty)
-                {
-                    MessageBox.Show("Method not found.", "Method not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
+                    MessageBox.Show("Please enter Method Name.", "Empty input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
-                dafnyCreate.Name = name;
-
+                dafnyCreate.NewMethod.Name = this.methodName.Text;
                 //Add var names and types
                 bool isFound = false;
            for (int i =1; i<=this.index;i++)
@@ -133,7 +182,7 @@ namespace VSIXProject_w
                     if (n != String.Empty && t != String.Empty)
                         break;
                 }
-                    if (n == String.Empty || t == String.Empty)
+                    if (n == String.Empty)
                         continue;
                     else
                     {
@@ -186,8 +235,8 @@ namespace VSIXProject_w
                 // Add parser
                 try
                 {
-                    DafnyCodeParser p = new DafnyCodeParser();
-                    p.parse_file(dte.ActiveDocument.FullName, dafnyCreate.Name);
+               //     DafnyCodeParser p = new DafnyCodeParser();
+                //    p.parse_file(dte.ActiveDocument.FullName, dafnyCreate.Name);
 
                     //vars:
                     List<String> varNames = p.get_var_names();
@@ -229,7 +278,13 @@ namespace VSIXProject_w
                 }
 
                 // insert text
-                toInsert.Insert("{\n" + dafnyCreate.generateBody() + "}\n\n" + dafnyCreate.generateMethod() + "\n\n" + dafnyCreate.generateStrengthLemma() + "\n\n" + dafnyCreate.generateWeakLemma() + "\n\n");
+                string pre_and_post = String.Empty;
+                if (pre_cond.Enabled)
+                    pre_and_post += "\n\n" + dafnyCreate.generateWeakLemma();
+                if (post_cond.Enabled)
+                    pre_and_post += "\n\n" + dafnyCreate.generateStrengthLemma();
+
+                toInsert.Insert("\n{\n" + dafnyCreate.generateBody() + "}\n\n" + dafnyCreate.generateMethod() + pre_and_post + "\n");
         
 
 
@@ -276,12 +331,15 @@ namespace VSIXProject_w
                 this.pre_cond.Enabled = true;
                 this.lableLemaPre.Enabled = true;
                 this.preCondName.Enabled = true;
+                this.pre_lable.Enabled = true;
+
             }
             else
             {
                 this.pre_cond.Enabled = false;
                 this.lableLemaPre.Enabled = false;
                 this.preCondName.Enabled = false;
+                this.pre_lable.Enabled = false;
             }
         }
 
@@ -292,6 +350,7 @@ namespace VSIXProject_w
                 this.post_cond.Enabled = true;
                 this.lableLemaPost.Enabled = true;
                 this.postLemaName.Enabled = true;
+                this.post_lable.Enabled = true;
             }
 
             else
@@ -299,6 +358,7 @@ namespace VSIXProject_w
                 this.post_cond.Enabled = false;
                 this.lableLemaPost.Enabled = false;
                 this.postLemaName.Enabled = false;
+                this.post_lable.Enabled = false;
             }
         }
 

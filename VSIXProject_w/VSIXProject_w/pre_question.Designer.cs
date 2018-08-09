@@ -39,11 +39,12 @@
             this.methodName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button_more = new System.Windows.Forms.Button();
+            this.pre_lable = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_clear
             // 
-            this.button_clear.Location = new System.Drawing.Point(323, 86);
+            this.button_clear.Location = new System.Drawing.Point(312, 113);
             this.button_clear.Name = "button_clear";
             this.button_clear.Size = new System.Drawing.Size(72, 29);
             this.button_clear.TabIndex = 11;
@@ -53,7 +54,7 @@
             // 
             // button_cancel
             // 
-            this.button_cancel.Location = new System.Drawing.Point(323, 51);
+            this.button_cancel.Location = new System.Drawing.Point(312, 78);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(72, 29);
             this.button_cancel.TabIndex = 10;
@@ -63,7 +64,7 @@
             // 
             // button_ok
             // 
-            this.button_ok.Location = new System.Drawing.Point(323, 16);
+            this.button_ok.Location = new System.Drawing.Point(312, 43);
             this.button_ok.Name = "button_ok";
             this.button_ok.Size = new System.Drawing.Size(72, 29);
             this.button_ok.TabIndex = 9;
@@ -101,13 +102,13 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(5, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 23;
-            this.label4.Text = "Pre Condition:";
+            this.label4.Text = "Pre Conditions:";
             // 
             // pre_cond1
             // 
-            this.pre_cond1.Location = new System.Drawing.Point(52, 131);
+            this.pre_cond1.Location = new System.Drawing.Point(52, 151);
             this.pre_cond1.Name = "pre_cond1";
             this.pre_cond1.Size = new System.Drawing.Size(224, 20);
             this.pre_cond1.TabIndex = 22;
@@ -130,7 +131,7 @@
             // 
             // button_more
             // 
-            this.button_more.Location = new System.Drawing.Point(52, 157);
+            this.button_more.Location = new System.Drawing.Point(52, 177);
             this.button_more.Name = "button_more";
             this.button_more.Size = new System.Drawing.Size(49, 29);
             this.button_more.TabIndex = 29;
@@ -138,11 +139,20 @@
             this.button_more.UseVisualStyleBackColor = true;
             this.button_more.Click += new System.EventHandler(this.button_more_Click);
             // 
+            // pre_lable
+            // 
+            this.pre_lable.AutoSize = true;
+            this.pre_lable.Location = new System.Drawing.Point(54, 135);
+            this.pre_lable.Name = "pre_lable";
+            this.pre_lable.Size = new System.Drawing.Size(0, 13);
+            this.pre_lable.TabIndex = 30;
+            // 
             // pre_question
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 197);
+            this.ClientSize = new System.Drawing.Size(415, 215);
+            this.Controls.Add(this.pre_lable);
             this.Controls.Add(this.button_more);
             this.Controls.Add(this.methodName);
             this.Controls.Add(this.label7);
@@ -174,5 +184,6 @@
         private System.Windows.Forms.TextBox methodName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_more;
+        private System.Windows.Forms.Label pre_lable;
     }
 }

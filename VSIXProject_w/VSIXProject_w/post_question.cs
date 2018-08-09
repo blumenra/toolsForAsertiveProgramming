@@ -18,13 +18,74 @@ namespace VSIXProject_w
     {
         TextBox prevtxtBox1;
         int index;
+        DafnyCodeParser p;
+        TextSelection toInsert;
 
         public post_question()
         {
             InitializeComponent();
             prevtxtBox1 = this.post_cond1;
             index = 1;
+            p = new DafnyCodeParser();
         }
+
+        public DialogResult ShowDialog()
+        {
+            TextDocument activeDoc = null;
+            DTE dte = null;
+
+            try
+            {
+                dte = Package.GetGlobalService(typeof(DTE)) as DTE;
+                activeDoc = dte.ActiveDocument.Object() as TextDocument;
+            }
+            catch
+            {
+                MessageBox.Show("Please open a Dafny file befor using the aplication.", "File not open", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //this.Close();
+                return DialogResult.Abort;
+
+            }
+
+            //get position 
+            var cursPoint = activeDoc.Selection.ActivePoint;
+
+            // to insert
+            toInsert = (EnvDTE.TextSelection)(activeDoc.Selection);
+
+            //get all text
+            var text = activeDoc.CreateEditPoint(activeDoc.StartPoint).GetText(activeDoc.EndPoint);
+
+            // get input to spesific class
+            // get input
+            string name = get_method_name(text, cursPoint);
+            if (name == String.Empty)
+            {
+                MessageBox.Show("Method not found.", "Method not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // this.Close();
+                return DialogResult.Abort;
+            }
+            label1.Text = "Please insert the postcondition and lemma name for the method \"" + name + "\" :";
+            try
+            {
+                p.parse_file(dte.ActiveDocument.FullName, name);
+
+
+                List<String> postcond = p.get_ens();
+                this.post_lable.Text = string.Join("\n", postcond);
+                this.post_cond1.Location = new Point(this.post_cond1.Location.X, this.post_cond1.Location.Y + 10 * postcond.Count);
+                this.button_more.Location = new Point(this.button_more.Location.X, this.button_more.Location.Y + 10 * postcond.Count);
+                this.Height += 10 * postcond.Count;
+            }
+            catch
+            {
+                MessageBox.Show("Error parsing Dafny.", "Error parsing Dafny.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // this.Close();
+                return DialogResult.Abort;
+            }
+            return base.ShowDialog();
+        }
+
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
@@ -45,46 +106,12 @@ namespace VSIXProject_w
         private void button_ok_Click(object sender, EventArgs e)
         {
             try
-            {
+            { 
                 assertiveToolDS dafnyCreate = new assertiveToolDS();
-                TextDocument activeDoc = null;
-                DTE dte = null;
+                dafnyCreate.Name = p.currentMethod.FullName;
 
-                try
-                {
-                    dte = Package.GetGlobalService(typeof(DTE)) as DTE;
-                    activeDoc = dte.ActiveDocument.Object() as TextDocument;
-                }
-                catch
-                {
-                    MessageBox.Show("Please open a Dafny file befor using the aplication.", "File not open", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                    return;
-
-                }
-
-                //get position 
-                var cursPoint = activeDoc.Selection.ActivePoint;
-
-            // to insert
-            TextSelection toInsert = (EnvDTE.TextSelection)(activeDoc.Selection);
-
-            //get all text
-            var text = activeDoc.CreateEditPoint(activeDoc.StartPoint).GetText(activeDoc.EndPoint);
-
-               
-                // get input
-                string name = get_method_name(text, cursPoint);
-                if (name == String.Empty)
-                {
-                    MessageBox.Show("Method not found.", "Method not found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                    return;
-                }
-                dafnyCreate.Name = name;
-
-                //validation:
-                if (this.methodName.Text == string.Empty)
+            //validation:
+            if (this.methodName.Text == string.Empty)
                 {
                     MessageBox.Show("Please enter Method Name.", "Empty input", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -119,9 +146,7 @@ namespace VSIXProject_w
 
                 try
                 {
-                    // Add parser
-                    DafnyCodeParser p = new DafnyCodeParser();
-                    p.parse_file(dte.ActiveDocument.FullName, dafnyCreate.Name);
+                    
 
                      //vars:
                     List<String> varNames = p.get_var_names();
@@ -140,7 +165,7 @@ namespace VSIXProject_w
                      Variable arg1 = new Variable(retNames[i], retTypes[i]);
                     dafnyCreate.AddRetValue(arg1);
                      }
-                    //precond
+                    //postcond
                  List<String> precond = p.get_req();
                     for (int i = 0; i < precond.Count; i++)
                     {
@@ -206,6 +231,11 @@ namespace VSIXProject_w
         }
 
         private void button_more_Click(object sender, EventArgs e)
+        {
+            add_posl_lable();
+        }
+
+        private void add_posl_lable()
         {
             index++;
             TextBox txtBox1;
