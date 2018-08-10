@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiniProject
+namespace VSIXProject_w
 {
     public class Method : GeneralFunction
     {

@@ -29,10 +29,10 @@ namespace VSIXProject_w
 
             // run parser
             string err = Main.ParseCheck(files, filename, r, out ret);
-            if (err != null)
-            {
-                return false;
-            }
+            //if (err != null)
+            //{
+            //    return false;
+            //}
 
             // program parsed well
             dafny_program = ret;

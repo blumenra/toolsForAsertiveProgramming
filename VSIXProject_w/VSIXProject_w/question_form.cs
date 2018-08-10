@@ -76,7 +76,7 @@ namespace VSIXProject_w
             {
                 //parsing
                 p.parse_file(dte.ActiveDocument.FullName, name);
-               
+
                 //adding pre conditions
                 List<String> precond = p.get_req();
                 this.pre_lable.Text = string.Join("\n", precond);
@@ -97,9 +97,9 @@ namespace VSIXProject_w
 
                 this.Height += 10 * postcond.Count + 10 *precond.Count;
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Error parsing Dafny.", "Error parsing Dafny.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(e.ToString(), "Exception caught during parsing", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 // this.Close();
                 return DialogResult.Abort;
             }

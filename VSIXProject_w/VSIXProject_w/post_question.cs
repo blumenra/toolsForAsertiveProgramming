@@ -77,9 +77,9 @@ namespace VSIXProject_w
                 this.button_more.Location = new Point(this.button_more.Location.X, this.button_more.Location.Y + 10 * postcond.Count);
                 this.Height += 10 * postcond.Count;
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Error parsing Dafny.", "Error parsing Dafny.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(e.ToString(), "Exception caught during parsing", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 // this.Close();
                 return DialogResult.Abort;
             }
