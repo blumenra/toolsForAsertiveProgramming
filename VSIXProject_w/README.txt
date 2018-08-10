@@ -48,10 +48,13 @@ This act will create the directory "C:\Users\USER\AppData\Local\Microsoft\Visual
 6. See the result of the modification by pressing 'Start' which will open a new window of visual studio with the extention (called 'refactoring') in the menu bar. then, open a dafny file and place the cursor where you would like execute the extention at. Finally, press 'refactoring' from the menu bar and choose the tool you wish to use.
 
 
+
 How to OPEN the project of the extention:
 Double-click on VSIXProject_w\VSIXProject_w.sln
 
 
+
 How to run all the tests of the project:
-1. Open the project on visual studio by double-clicking "VSIXProject_w
+1. Open the project on visual studio by double-clicking "VSIXProject_w\VSIXProject_w.sln"
 2. choose menu -> Test -> Run -> All Tests (or type Ctrl+R,A)
+
