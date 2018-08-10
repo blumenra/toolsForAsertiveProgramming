@@ -51,3 +51,7 @@ This act will create the directory "C:\Users\USER\AppData\Local\Microsoft\Visual
 How to OPEN the project of the extention:
 Double-click on VSIXProject_w\VSIXProject_w.sln
 
+
+How to run all the tests of the project:
+1. Open the project on visual studio by double-clicking "VSIXProject_w
+2. choose menu -> Test -> Run -> All Tests (or type Ctrl+R,A)
